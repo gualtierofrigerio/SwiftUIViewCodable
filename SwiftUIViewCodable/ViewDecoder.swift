@@ -27,9 +27,10 @@ enum ViewType:String,Codable {
     }
 }
 
-struct ViewNode:Codable {
+struct ViewNode {
     var type:ViewType
     var children:[ViewNode]
+    var modifiers:[Modifier]
 }
 
 struct ViewDecoder {
@@ -57,6 +58,5 @@ struct ViewDecoder {
             self.viewForNode(nodes[$0])
         }
     }
-    
     
 }

@@ -16,7 +16,6 @@ let sampleNode = ViewNode(type: .group, data: nil, children: [], modifiers: [])
 
 struct ContentView: View {
     var nodes:[ViewNode]
-    var viewDecoder = ViewDecoder()
     
     init() {
         if let url = Bundle.main.url(forResource: "Views", withExtension: "json"),
@@ -30,7 +29,7 @@ struct ContentView: View {
     }
     
     var body: some View {
-        viewDecoder.viewsForNodes(nodes)
+        ViewDecoder.viewsForNodes(nodes)
     }
 }
 

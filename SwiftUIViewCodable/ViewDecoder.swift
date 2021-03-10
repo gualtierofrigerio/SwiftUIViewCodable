@@ -9,54 +9,37 @@
 import Foundation
 import SwiftUI
 
-enum ViewType:String,Codable {
-    case group = "Group"
-    case hstack = "HStack"
-    case vstack = "VStack"
-    case zstack = "ZStack"
-    case spacer = "Spacer"
-    case text = "Text"
-    
-    func needsChildren() -> Bool {
-        switch self {
-        case .group,.hstack,.vstack,.zstack:
-            return true
-        default:
-            return false
-        }
-    }
-}
-
-struct ViewNode {
-    var type:ViewType
-    var children:[ViewNode]
-    var modifiers:[Modifier]
-}
-
 struct ViewDecoder {
-    func viewForNode(_ node:ViewNode) -> AnyView {
+    func viewForNode(_ node:ViewNode) -> some View {
         let childrenView = viewsForNodes(node.children)
-        switch node.type {
-        case .group:
-            return AnyView(Group{childrenView})
-        case .hstack:
-            return AnyView(HStack{childrenView})
-        case .vstack:
-            return AnyView(VStack{childrenView})
-        case .zstack:
-            return AnyView(ZStack{childrenView})
-        case .spacer:
-            return AnyView(Spacer())
-        case .text:
-            return AnyView(Text("test"))
         
+        @ViewBuilder var returnView: some View {
+            switch node.type {
+            case .group:
+                Group { childrenView }
+            case .hstack:
+                HStack { childrenView }
+            case .vstack:
+                VStack { childrenView }
+            case .zstack:
+                ZStack { childrenView }
+            case .spacer:
+                Spacer()
+            case .text:
+                if let data = node.data {
+                    Text(data)
+                }
+                else {
+                    Text("...")
+                }
+            }
         }
+        return AnyView(returnView) // build error if I return returnView without casting to AnyView
     }
     
     func viewsForNodes(_ nodes:[ViewNode]) -> some View {
-        ForEach(0..<nodes.count) {
-            self.viewForNode(nodes[$0])
+        ForEach(nodes) { node in
+            self.viewForNode(node)
         }
     }
-    
 }

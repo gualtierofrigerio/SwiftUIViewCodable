@@ -1,0 +1,14 @@
+{
+    "type" : "VStack",
+    "children" : [
+        {
+            "type"  : "Text",
+            "data"  : "test test test",
+            "children"  : [],
+            "modifiers" : [
+                {"type" : "background", "color" : "FFFF00"}
+            ]
+        }
+    ],
+    "modifiers" : []
+}

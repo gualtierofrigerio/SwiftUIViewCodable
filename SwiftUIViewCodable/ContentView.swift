@@ -8,11 +8,26 @@
 
 import SwiftUI
 
+//let sampleNode = ViewNode(type: .group,
+//                          children: ContentView.makeNodes(),
+//                          modifiers: [])
+
+let sampleNode = ViewNode(type: .group, data: nil, children: [], modifiers: [])
+
 struct ContentView: View {
-    var nodes = [ViewNode(type: .group,
-                          children: ContentView.makeNodes(),
-                          modifiers: [])]
+    var nodes:[ViewNode]
     var viewDecoder = ViewDecoder()
+    
+    init() {
+        if let url = Bundle.main.url(forResource: "Views", withExtension: "json"),
+           let data = try? Data(contentsOf: url),
+           let node = JSONHelper.node(fromData: data) {
+            self.nodes = [node]
+        }
+        else {
+            nodes = [sampleNode]
+        }
+    }
     
     var body: some View {
         viewDecoder.viewsForNodes(nodes)
@@ -21,9 +36,12 @@ struct ContentView: View {
 
 extension ContentView {
     static func makeNodes() -> [ViewNode] {
-        let textNode1 = ViewNode(type: .text, children: [], modifiers: [.font(size: 30)])
+        /*
+        let textNode1 = ViewNode(type: .text, data:"Test!", children: [], modifiers: [.font(size: 30)])
         let textNode2 = ViewNode(type: .text, children: [], modifiers: [.font(size: 10)])
         return [textNode1, textNode2]
+        */
+        return []
     }
 }
 

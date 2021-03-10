@@ -22,7 +22,16 @@ class JSONHelper {
         return modifiers
     }
     
-    class func nodes(fromObject object:Any) -> [ViewNode]? {
-        nil
+    class func node(fromData data:Data) -> ViewNode? {
+        let decoder = JSONDecoder()
+        do {
+            let node = try decoder.decode(ViewNode.self, from: data)
+            return node
+        }
+        catch (let error) {
+            print(error)
+        }
+        
+        return nil
     }
 }

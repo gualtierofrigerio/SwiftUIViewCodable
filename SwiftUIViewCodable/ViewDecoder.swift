@@ -10,8 +10,8 @@ import Foundation
 import SwiftUI
 
 struct ViewDecoder {
-    func viewForNode(_ node:ViewNode) -> some View {
-        let childrenView = viewsForNodes(node.children)
+    static func viewForNode(_ node:ViewNode) -> some View {
+        let childrenView = ChildrenView(nodes:node.children)
         
         @ViewBuilder var returnView: some View {
             switch node.type {
@@ -34,12 +34,25 @@ struct ViewDecoder {
                 }
             }
         }
-        return AnyView(returnView) // build error if I return returnView without casting to AnyView
+        return returnView
     }
     
-    func viewsForNodes(_ nodes:[ViewNode]) -> some View {
+    static func viewsForNodes(_ nodes:[ViewNode]) -> some View {
+        ChildrenView(nodes:nodes)
+    }
+}
+
+// MARK: - ChildrenView
+
+/// To avoid a compiler error I created this struct to contain all the children
+/// If I don't and try to call viewForNode inside viewFromNodes I get the error
+/// during build
+fileprivate struct ChildrenView: View {
+    let nodes:[ViewNode]
+    
+    var body: some View {
         ForEach(nodes) { node in
-            self.viewForNode(node)
+            ViewDecoder.viewForNode(node)
         }
     }
 }

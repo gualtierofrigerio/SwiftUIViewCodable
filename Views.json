@@ -2,6 +2,30 @@
     "type" : "VStack",
     "children" : [
         {
+            "type"  : "HStack",
+            "children"  : [
+                {
+                    "type"  : "Text",
+                    "data"  : "test1",
+                    "children"  : [],
+                    "modifiers" : [
+                        {"type" : "background", "color" : "00FF00"}
+                    ]
+                },
+                {
+                    "type"  : "Text",
+                    "data"  : "test2",
+                    "children"  : [],
+                    "modifiers" : [
+                        {"type" : "background", "color" : "00FF00"}
+                    ]
+                }
+            ],
+            "modifiers" : [
+                {"type" : "background", "color" : "FF0000"}
+            ]
+        },
+        {
             "type"  : "Text",
             "data"  : "test test test",
             "children"  : [],

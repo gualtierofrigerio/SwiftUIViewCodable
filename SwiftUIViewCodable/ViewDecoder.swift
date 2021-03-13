@@ -32,9 +32,16 @@ struct ViewDecoder {
                 else {
                     Text("...")
                 }
+            case .image:
+                if let data = node.data {
+                    Image(data)
+                }
+                else {
+                    Text("no image data provided")
+                }
             }
         }
-        return returnView
+        return returnView.modifier(CustomModifier(withModifiers: node.modifiers))
     }
     
     static func viewsForNodes(_ nodes:[ViewNode]) -> some View {

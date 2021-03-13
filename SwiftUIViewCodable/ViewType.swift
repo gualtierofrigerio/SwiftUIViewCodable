@@ -15,6 +15,7 @@ enum ViewType:String,Codable {
     case zstack = "ZStack"
     case spacer = "Spacer"
     case text   = "Text"
+    case image  = "Image"
     
     func needsChildren() -> Bool {
         switch self {

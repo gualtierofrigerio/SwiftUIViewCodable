@@ -9,9 +9,6 @@
 import SwiftUI
 
 struct CustomModifier:ViewModifier {
-    
-    var background:Color = Color.red
-    var fontSize:CGFloat = 40
     var modifiers:[Modifier] = []
     
     init(withModifiers:[Modifier]) {
@@ -22,18 +19,21 @@ struct CustomModifier:ViewModifier {
         applyModifiers(modifiers, toContent: content)
     }
     
-    private func applyModifier(_ modifier:Modifier, toContent content:Content) -> AnyView {
-        switch modifier {
-        case .background(let color):
-            return AnyView(content.background(color))
-        case .font(let size):
-            return AnyView(content.font(Font.system(size: size)))
-        case .null:
-            return AnyView(content)
+    private func applyModifier(_ modifier:Modifier, toContent content:Content) -> some View {
+        @ViewBuilder var modifiedView: some View {
+            switch modifier {
+            case .background(let color):
+                content.background(color)
+            case .font(let size):
+                content.font(Font.system(size: size))
+            case .null:
+                content
+            }
         }
+        return modifiedView
     }
         
-    private func applyModifiers(_ modifiers:[Modifier], toContent content:Content) -> AnyView {
+    private func applyModifiers(_ modifiers:[Modifier], toContent content:Content) -> some View {
         guard let modifier = modifiers.first else {
             return applyModifier(.null, toContent: content)
         }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		254377D125FB650700D9BF91 /* Color+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254377D025FB650700D9BF91 /* Color+ext.swift */; };
 		25764380245DB8A1007B7695 /* Modifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2576437F245DB8A1007B7695 /* Modifier.swift */; };
 		25764382245EFB23007B7695 /* ViewDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25764381245EFB23007B7695 /* ViewDecoder.swift */; };
 		25764384246016FC007B7695 /* CustomModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25764383246016FC007B7695 /* CustomModifier.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		254377D025FB650700D9BF91 /* Color+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+ext.swift"; sourceTree = "<group>"; };
 		2576437F245DB8A1007B7695 /* Modifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifier.swift; sourceTree = "<group>"; };
 		25764381245EFB23007B7695 /* ViewDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDecoder.swift; sourceTree = "<group>"; };
 		25764383246016FC007B7695 /* CustomModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModifier.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 			children = (
 				25A2C534245D771B00DE4BA6 /* AppDelegate.swift */,
 				25A2C536245D771B00DE4BA6 /* SceneDelegate.swift */,
+				254377D025FB650700D9BF91 /* Color+ext.swift */,
 				25A2C538245D771B00DE4BA6 /* ContentView.swift */,
 				25764383246016FC007B7695 /* CustomModifier.swift */,
 				25764385246017A4007B7695 /* JSONHelper.swift */,
@@ -177,6 +180,7 @@
 				25AB949F25F7AB93003AD904 /* ViewType.swift in Sources */,
 				25764384246016FC007B7695 /* CustomModifier.swift in Sources */,
 				25764386246017A4007B7695 /* JSONHelper.swift in Sources */,
+				254377D125FB650700D9BF91 /* Color+ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

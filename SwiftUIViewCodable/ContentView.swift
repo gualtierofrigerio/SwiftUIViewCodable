@@ -8,10 +8,6 @@
 
 import SwiftUI
 
-//let sampleNode = ViewNode(type: .group,
-//                          children: ContentView.makeNodes(),
-//                          modifiers: [])
-
 let sampleNode = ViewNode(type: .group, data: nil, children: [], modifiers: [])
 
 struct ContentView: View {
@@ -30,17 +26,6 @@ struct ContentView: View {
     
     var body: some View {
         ViewDecoder.viewsForNodes(nodes)
-    }
-}
-
-extension ContentView {
-    static func makeNodes() -> [ViewNode] {
-        /*
-        let textNode1 = ViewNode(type: .text, data:"Test!", children: [], modifiers: [.font(size: 30)])
-        let textNode2 = ViewNode(type: .text, children: [], modifiers: [.font(size: 10)])
-        return [textNode1, textNode2]
-        */
-        return []
     }
 }
 

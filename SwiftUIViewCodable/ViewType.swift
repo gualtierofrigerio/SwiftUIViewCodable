@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Enum describing a a SwiftUI view
 enum ViewType:String,Codable {
     case group  = "Group"
     case hstack = "HStack"

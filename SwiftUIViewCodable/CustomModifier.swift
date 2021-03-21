@@ -8,6 +8,8 @@
 
 import SwiftUI
 
+/// Struct used to apply custom modifiers to SwiftUI views
+/// Eech modifier is described by the enum Modifier
 struct CustomModifier:ViewModifier {
     var modifiers:[Modifier] = []
     
@@ -19,6 +21,13 @@ struct CustomModifier:ViewModifier {
         applyModifiers(modifiers, toContent: content)
     }
     
+    // MARK: - Private
+    
+    /// Apply a Modifier to a view
+    /// - Parameters:
+    ///   - modifier: A view modifier described by the Modifier enum
+    ///   - content: The view to apply the modifier to
+    /// - Returns: The modified view
     private func applyModifier(_ modifier:Modifier, toContent content:Content) -> some View {
         @ViewBuilder var modifiedView: some View {
             switch modifier {
@@ -32,7 +41,12 @@ struct CustomModifier:ViewModifier {
         }
         return modifiedView
     }
-        
+    
+    /// Apply an array of modifiers to a view
+    /// - Parameters:
+    ///   - modifiers: The list of modifiers to apply
+    ///   - content: The view to apply the modifiers to
+    /// - Returns: The modified view
     private func applyModifiers(_ modifiers:[Modifier], toContent content:Content) -> some View {
         guard let modifier = modifiers.first else {
             return applyModifier(.null, toContent: content)

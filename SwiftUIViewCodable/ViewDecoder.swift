@@ -9,7 +9,13 @@
 import Foundation
 import SwiftUI
 
+/// VIewDecoder contains static functions to get a SwiftUI View
+/// from a ViewNode or an array of ViewNode
 struct ViewDecoder {
+    
+    /// Returns a View from a ViewNode
+    /// - Parameter node: The ViewNode describing the view to create
+    /// - Returns: A View configured by the ViewNode
     static func viewForNode(_ node:ViewNode) -> some View {
         let childrenView = ChildrenView(nodes:node.children)
         
@@ -44,6 +50,9 @@ struct ViewDecoder {
         return returnView.modifier(CustomModifier(withModifiers: node.modifiers))
     }
     
+    /// Returns a View from an array of ViewNode
+    /// - Parameter nodes: The array of ViewNode composing the view
+    /// - Returns: The View configured by the ViewNode array
     static func viewsForNodes(_ nodes:[ViewNode]) -> some View {
         ChildrenView(nodes:nodes)
     }
